@@ -1,5 +1,5 @@
 import requests
 
-req = requests.get("http://google.com")
+req = requests.get("https://raw.githubusercontent.com/jihoonog/CMPUT-404-Labs/main/lab-1/curl.py")
 
-print(req)
+print(req.text)
