@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import requests
 
 # This will send a GET request to the raw URL that points to this file on my personal GitHub. 
