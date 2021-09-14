@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 import socket
 import time
+import sys
+from multiprocessing import Process
 
 #define address & buffer size
-HOST = ""
+HOST = "localhost"
 PORT = 8001
 BUFFER_SIZE = 1024
 
@@ -23,11 +25,19 @@ def main():
             conn, addr = s.accept()
             print("Connected by", addr)
             
-            #recieve data, wait a bit, then send it back
-            full_data = conn.recv(BUFFER_SIZE)
-            time.sleep(0.5)
-            conn.sendall(full_data)
-            conn.close()
+            p = Process(target=handle_echo, args=(addr, conn))
+            p.daemon = True
+            p.start()
+            print("Started process ", p)
+            
+
+def handle_echo(addr, conn):
+    #recieve data, wait a bit, then send it back
+    full_data = conn.recv(BUFFER_SIZE)
+    time.sleep(0.5)
+    conn.sendall(full_data)
+    conn.shutdown(socket.SHUT_RDWR)
+    conn.close()
 
 if __name__ == "__main__":
     main()

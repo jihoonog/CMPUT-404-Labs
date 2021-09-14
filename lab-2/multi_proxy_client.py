@@ -14,7 +14,7 @@ def connect(addr):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect(addr)
         s.sendall(payload.encode())
-        s.shutdown(socket.SHUT_RDWR)
+        s.shutdown(socket.SHUT_WR)
 
         full_data = s.recv(BUFFER_SIZE)
         print(full_data)
