@@ -3,7 +3,7 @@
 
 AUTHOR = 'Jihoon Og'
 SITENAME = 'Lab Website'
-SITEURL = 'https://jihoonog.github.io/CMPUT-404-Labs/'
+SITEURL = 'https://jihoonog.github.io/'
 
 PATH = 'content'
 
